@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ezam_System.Migrations
 {
     [DbContext(typeof(EzamDbContext))]
-    [Migration("20220622115505_StaffTable")]
-    partial class StaffTable
+    [Migration("20220622190656_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
