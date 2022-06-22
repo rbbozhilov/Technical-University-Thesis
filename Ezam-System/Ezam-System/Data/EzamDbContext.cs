@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Ezam_System.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ezam_System.Data
@@ -9,5 +10,9 @@ namespace Ezam_System.Data
             : base(options)
         {
         }
+
+        public virtual DbSet<Staff> Staff { get; set; }
+
+
     }
 }
