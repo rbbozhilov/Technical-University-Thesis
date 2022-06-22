@@ -1,0 +1,44 @@
+﻿@model IEnumerable<StaffFormModelForAdmin>
+
+<link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+
+
+@{
+    ViewData["Title"] = "Всички служители";
+}
+
+
+<div class="row">
+
+    @if (Model.Any())
+    {
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Име на служител</th>
+                    <th scope="col">Промяна на информацията за служител</th>
+                    <th scope="col">Изтриване на служител</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var staff in Model)
+                {
+
+                    <tr>
+                        <td>@staff.FullName</td>
+                        <td><a asp-controller="AdminPanel" asp-action="EditStaff" asp-route-id="@staff.Id" class="btn btn-warning">Променяна</a></td>
+                        <td><a asp-controller="AdminPanel" asp-action="DeleteStaff" asp-route-id="@staff.Id" class="btn btn-danger">Изтрии</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <h1>Няма въведени служители в момента</h1>
+    }
+
+</div>

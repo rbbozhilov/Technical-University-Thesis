@@ -1,4 +1,5 @@
 using Ezam_System.Data;
+using Ezam_System.Services.Staffs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<EzamDbContext>();
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddTransient<IStaffService, StaffService>();
+
 
 var app = builder.Build();
 

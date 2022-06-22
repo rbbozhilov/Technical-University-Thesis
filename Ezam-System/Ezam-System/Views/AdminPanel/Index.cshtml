@@ -1,0 +1,20 @@
+﻿<link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+
+@{
+    ViewData["Title"] = "Админ панел";
+}
+
+<div class="jumbotron text-center">
+    <img height=250 weigth=250 src="https://st.depositphotos.com/1002881/1285/i/950/depositphotos_12859789-stock-photo-admin-tag.jpg" />
+</div>
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+           <a class="nav-link text-white" asp-area="" asp-controller="AdminPanel" asp-action="ShowStaff">Служители</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-white" asp-area="" asp-controller="AdminPanel" asp-action="AddStaff">Добавяне на служител</a>
+    </li>
+  </ul>
+</nav>

@@ -1,5 +1,7 @@
 ﻿using Ezam_System.Data;
 using Ezam_System.Data.Models;
+using Ezam_System.Models.Staff;
+using Ezam_System.Views.ViewModels.Staff;
 using System.Linq;
 
 namespace Ezam_System.Services.Staffs
@@ -46,7 +48,7 @@ namespace Ezam_System.Services.Staffs
                                         .Where(s => s.Id == id && s.IsDeleted == false)
                                         .FirstOrDefault();
 
-            if(currentStaff == null)
+            if (currentStaff == null)
             {
                 return false;
             }
@@ -60,7 +62,7 @@ namespace Ezam_System.Services.Staffs
         }
 
         public bool Edit(
-                         int id, 
+                         int id,
                          string fullname,
                          string position,
                          string email,
@@ -73,7 +75,7 @@ namespace Ezam_System.Services.Staffs
                                         .FirstOrDefault();
 
 
-            if(currentStaff == null)
+            if (currentStaff == null)
             {
                 return false;
             }
@@ -85,7 +87,50 @@ namespace Ezam_System.Services.Staffs
             currentStaff.ImageUrl = imageUrl;
             currentStaff.Office = office;
 
+            this.data.SaveChanges();
+
             return true;
         }
+
+        public IEnumerable<AllStaffDetailsViewModel> GetAllStaffDetails()
+        => this.data.Staff
+                    .Where(s => s.IsDeleted == false)
+                    .Select(s => new AllStaffDetailsViewModel()
+                    {
+                        Email = s.Email,
+                        FullName = s.FullName,
+                        ImageUrl = s.ImageUrl,
+                        Office = s.Office,
+                        PhoneNumber = s.PhoneNumber,
+                        Position = s.Position
+                    })
+                    .ToList();
+
+        public IEnumerable<StaffFormModelForAdmin> GetAllStaffForAdmin()
+        => this.data.Staff
+                    .Where(s => s.IsDeleted == false)
+                    .Select(s => new StaffFormModelForAdmin()
+                    {
+                        Id = s.Id,
+                        FullName = s.FullName
+                    })
+                    .ToList();
+
+
+        public StaffFormModel GetStaffById(int id)
+        => this.data.Staff
+                     .Where(s => s.Id == id && s.IsDeleted == false)
+                     .Select(s => new StaffFormModel()
+                     {
+                         FullName = s.FullName,
+                         Email = s.Email,
+                         PhoneNumber = s.PhoneNumber,
+                         ImageUrl = s.ImageUrl,
+                         Office = s.Office,
+                         Position = s.Position,
+                     })
+                     .FirstOrDefault();
+
+
     }
 }
