@@ -1,6 +1,30 @@
-﻿namespace Ezam_System.Views.Activity
+﻿@model IEnumerable<AllDissertationDetailsViewModel>
+
+
+    @if (Model.Any())
 {
-    public class Dissertation
-    {
-    }
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Номер</th>
+                <th scope="col">Име</th>
+                <th scope="col">Ръководител</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dissertation in Model)
+            {
+                <tr>
+                    <td>@dissertation.Number</td>
+                    <td>@dissertation.FullName</td>
+                    <td>@dissertation.Supervisor</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
+else
+{
+    <h1 style="text-align:center">Няма добавени дисертации.</h1>
+}
+

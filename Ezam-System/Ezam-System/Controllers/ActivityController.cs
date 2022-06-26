@@ -1,9 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Ezam_System.Services.Dissertations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ezam_System.Controllers
 {
     public class ActivityController : Controller
     {
+
+        private IDissertationService dissertationService;
+
+        public ActivityController(IDissertationService dissertationService)
+        {
+            this.dissertationService = dissertationService;
+        }
 
 
         public IActionResult Scientific()
@@ -12,8 +20,6 @@ namespace Ezam_System.Controllers
         }
 
         public IActionResult Dissertation()
-        {
-            return View();
-        }
+        => View(this.dissertationService.GetAllDissertationsDetails());
     }
 }

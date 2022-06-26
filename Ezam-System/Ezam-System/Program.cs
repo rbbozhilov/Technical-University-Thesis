@@ -1,4 +1,5 @@
 using Ezam_System.Data;
+using Ezam_System.Services.Dissertations;
 using Ezam_System.Services.Staffs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ builder.Services.AddControllersWithViews();
 
 
 builder.Services.AddTransient<IStaffService, StaffService>();
+builder.Services.AddTransient<IDissertationService, DissertationService>();
 
 
 var app = builder.Build();

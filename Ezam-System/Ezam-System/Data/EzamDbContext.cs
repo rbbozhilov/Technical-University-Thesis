@@ -13,6 +13,7 @@ namespace Ezam_System.Data
 
         public virtual DbSet<Staff> Staff { get; set; }
 
+        public virtual DbSet<Dissertation> Dissertations { get; set; }
 
     }
 }

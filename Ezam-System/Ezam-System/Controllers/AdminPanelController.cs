@@ -1,4 +1,6 @@
-﻿using Ezam_System.Models.Staff;
+﻿using Ezam_System.Models.Dissertation;
+using Ezam_System.Models.Staff;
+using Ezam_System.Services.Dissertations;
 using Ezam_System.Services.Staffs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +10,13 @@ namespace Ezam_System.Controllers
     {
 
         private readonly IStaffService staffService;
+        private readonly IDissertationService dissertationService;
 
-        public AdminPanelController(IStaffService staffService)
+
+        public AdminPanelController(IStaffService staffService,IDissertationService dissertationService)
         {
             this.staffService = staffService;
+            this.dissertationService = dissertationService;
         }
 
 
@@ -107,6 +112,91 @@ namespace Ezam_System.Controllers
         {
 
             if (!this.staffService.Delete(id))
+            {
+                return BadRequest();
+            }
+
+            return View("Successfull");
+        }
+
+
+        public IActionResult AddDissertation()
+           => View();
+
+        [HttpPost]
+        public IActionResult AddDissertation(DissertationFormModel dissertationFormModel)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(dissertationFormModel);
+            }
+
+
+            this.dissertationService.Create(
+                                            dissertationFormModel.FullName,
+                                            dissertationFormModel.Number,
+                                            dissertationFormModel.Supervisor);
+
+
+            return RedirectToAction("Successfull");
+        }
+
+        public IActionResult EditDissertation(int id)
+        {
+            var currentDissertation = this.dissertationService.GetDissertationById(id);
+
+            if (currentDissertation == null)
+            {
+                return BadRequest();
+            }
+
+
+            return View(new DissertationFormModel()
+            {
+                FullName = currentDissertation.FullName,
+                Number = currentDissertation.Number,
+                Supervisor = currentDissertation.Supervisor
+            });
+        }
+
+        [HttpPost]
+        public IActionResult EditDissertation(DissertationFormModel dissertationFormModel, int id)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(dissertationFormModel);
+            }
+
+            bool isEditted = this.dissertationService.Edit(
+                                                    id,
+                                                    dissertationFormModel.FullName,
+                                                    dissertationFormModel.Number,
+                                                    dissertationFormModel.Supervisor);
+
+            if (!isEditted)
+            {
+                return BadRequest();
+            }
+
+
+            return RedirectToAction("Successfull");
+
+        }
+
+        public IActionResult ShowDissertation(IEnumerable<DissertationFormModelForAdmin> dissertationFormModel)
+        {
+            dissertationFormModel = this.dissertationService.GetAllDissertationsForAdmin();
+
+            return View(dissertationFormModel);
+        }
+
+
+        public IActionResult DeleteDissertation(int id)
+        {
+
+            if (!this.dissertationService.Delete(id))
             {
                 return BadRequest();
             }

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DissertationFormModelForAdmin>
+
+<link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+
+
+@{
+    ViewData["Title"] = "Всички дисертации";
+}
+
+
+<div class="row">
+
+    @if (Model.Any())
+    {
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Име на докторант</th>
+                    <th scope="col">Промяна на информацията на докторант</th>
+                    <th scope="col">Изтриване на докторант</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var dissertation in Model)
+                {
+
+                    <tr>
+                        <td>@dissertation.FullName</td>
+                        <td><a asp-controller="AdminPanel" asp-action="EditDissertation" asp-route-id="@dissertation.Id" class="btn btn-warning">Променяне</a></td>
+                        <td><a asp-controller="AdminPanel" asp-action="DeleteDissertation" asp-route-id="@dissertation.Id" class="btn btn-danger">Изтрии</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <h1>Няма въведени дисертации в момента</h1>
+    }
+
+</div>

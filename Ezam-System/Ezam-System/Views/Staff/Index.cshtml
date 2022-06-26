@@ -1,34 +1,42 @@
 ﻿@model IEnumerable<AllStaffDetailsViewModel>
 
 
-
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col"></th>
-            <th scope="col">Име</th>
-            <th scope="col">Длъжност</th>
-            <th scope="col">Кабинет</th>
-            <th scope="col">Телефон</th>
-            <th scope="col">Емайл адрес</th>
-        </tr>
-    </thead>
-    <tbody>
+    @if (Model.Any())
+{
 
 
-
-        @foreach (var currentStaff in Model)
-        {
+    <table class="table">
+        <thead class="thead-dark">
             <tr>
-                <td class="w-25">
-                    <img src="@currentStaff.ImageUrl" class="img-fluid img-thumbnail" alt="Sheep" style="width:30%">
-                </td>
-                <td>@currentStaff.FullName</td>
-                <td>@currentStaff.Position</td>
-                <td>@currentStaff.Office</td>
-                <td>@currentStaff.PhoneNumber</td>
-                <td>@currentStaff.Email</td>
+                <th scope="col"></th>
+                <th scope="col">Име</th>
+                <th scope="col">Длъжност</th>
+                <th scope="col">Кабинет</th>
+                <th scope="col">Телефон</th>
+                <th scope="col">Емайл адрес</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+
+
+
+            @foreach (var currentStaff in Model)
+            {
+                <tr>
+                    <td class="w-25">
+                        <img src="@currentStaff.ImageUrl" class="img-fluid img-thumbnail" alt="Sheep" style="width:30%">
+                    </td>
+                    <td>@currentStaff.FullName</td>
+                    <td>@currentStaff.Position</td>
+                    <td>@currentStaff.Office</td>
+                    <td>@currentStaff.PhoneNumber</td>
+                    <td>@currentStaff.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h1 style="text-align:center">Няма добавени служители.</h1>
+}

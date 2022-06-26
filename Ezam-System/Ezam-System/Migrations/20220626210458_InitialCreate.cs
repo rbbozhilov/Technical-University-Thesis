@@ -49,6 +49,22 @@ namespace Ezam_System.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Dissertations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Number = table.Column<int>(type: "int", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Supervisor = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Dissertations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Staff",
                 columns: table => new
                 {
@@ -229,6 +245,9 @@ namespace Ezam_System.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Dissertations");
 
             migrationBuilder.DropTable(
                 name: "Staff");
