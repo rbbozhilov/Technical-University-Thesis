@@ -1,0 +1,81 @@
+﻿
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="http://aez.tu-sofia.bg/index.html">АЕЗ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Post" asp-action="Index">Съобщения</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Base" asp-action="Index">База</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Дейности
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="nav-link text-black" asp-area="" asp-controller="Study" asp-action="Index">Учебна</a>
+                        <a class="nav-link text-black" asp-area="" asp-controller="Activity" asp-action="Scientific">Научна</a>
+                        <a class="nav-link text-black" asp-area="" asp-controller="Activity" asp-action="Dissertation">Дисертации</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Publication" asp-action="Index">Публикации</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Студенти
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Литература</a>
+                        <a class="dropdown-item" href="#">Софтуер</a>
+                        <a class="dropdown-item" href="#">Курсови проекти</a>
+                        <a class="dropdown-item" href="#">Лабораторни упражнения</a>
+                        <a class="dropdown-item" href="#">Полезни връзки</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Robotic" asp-action="Index">Роботика</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Fun" asp-action="Index">Забавно</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        За нас
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="nav-link text-black" asp-area="" asp-controller="History" asp-action="Index">История</a>
+                        <a class="nav-link text-black" asp-area="" asp-controller="Staff" asp-action="Index">Състав</a>
+                    </div>
+                </li>
+
+
+            </ul>
+            <ul class="navbar-nav flex-grow-1 navbar-right">
+
+                @if (this.User.Identity.IsAuthenticated)
+                {
+                    <li class="right">
+                        <a class="nav-link text-white" asp-area="" asp-controller="WishList" asp-action="Index"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
+                    </li>
+                }
+
+                @if (User.Identity.IsAuthenticated && (User.IsInRole("Administrator") || User.IsInRole("Moderator")))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin Panel</a>
+                    </li>
+                }
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
