@@ -9,61 +9,56 @@
             <div class="row">
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Most atractive fitness website</h5>
-                    <p style="color:white">This site is created only for education . All products , recipes , trainers has been taken only for education.</p>
+                    <h5 class="text-uppercase">Контакти</h5>
+                    <p style="color:white">Телефон: 965-2628<br />кабинет: 9404 <br /> Адрес: 1000 София, бул. "Кл. Охридски" 8, ТУ-София, бл. 9</p>
                 </div>
                 <!--Grid column-->
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Fitness things</h5>
+                    <h5 class="text-uppercase">Дейности</h5>
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a asp-area="" asp-controller="Class" asp-action="Index" class="text-white">Classes</a>
+                            <a asp-area="" asp-controller="Study" asp-action="Index" class="text-white">Учебна дейност</a>
                         </li>
                         <li>
-                            <a asp-area="" asp-controller="Trainer" asp-action="Index" class="text-white">Trainers</a>
+                            <a asp-area="" asp-controller="Activity" asp-action="Scientific" class="text-white">Научна дейност</a>
                         </li>
                         <li>
-                            <a asp-area="" asp-controller="Exercise" asp-action="Index" class="text-white">Exercises</a>
-                        </li>
-                        <li>
-                            <a asp-area="" asp-controller="Calculator" asp-action="Index" class="text-white">Calculator</a>
+                            <a asp-area="" asp-controller="Activity" asp-action="Dissertation" class="text-white">Десертации</a>
                         </li>
                     </ul>
                 </div>
                 <!--Grid column-->
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Magazine / Health</h5>
+                    <h5 class="text-uppercase">За нас</h5>
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a asp-area="" asp-controller="Shop" asp-action="Index" class="text-white">Shop</a>
+                            <a asp-area="" asp-controller="History" asp-action="Index" class="text-white">История</a>
                         </li>
                         <li>
-                            <a asp-area="" asp-controller="Recipe" asp-action="Index" class="text-white">Recipes</a>
+                            <a asp-area="" asp-controller="Staff" asp-action="Index" class="text-white">Състав</a>
                         </li>
-                        <li>
-                            <a asp-area="" asp-controller="Contact" asp-action="Index" class="text-white">Contact</a>
-                        </li>
+
                     </ul>
                 </div>
 
                 @if (!User.Identity.IsAuthenticated)
                 {
                      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Free Login / Register</h5>
+                    <h5 class="text-uppercase">Вход / Регистрация</h5>
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a asp-area="Identity" asp-page="/Account/Login"  class="btn btn-primary">LogIn</a>
+                            <a asp-area="Identity" asp-page="/Account/Login"  class="btn btn-primary">Вход</a>
                         </li>
                         <li>
                             <br />
                         </li>
                         <li>
-                            <a asp-area="Identity" asp-page="/Account/Register"  class="btn btn-danger">Register</a>
+                            <a asp-area="Identity" asp-page="/Account/Register"  class="btn btn-danger">Регистрация</a>
                         </li>
 
                     </ul>

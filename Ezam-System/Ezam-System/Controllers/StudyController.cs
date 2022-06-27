@@ -10,7 +10,5 @@ namespace Ezam_System.Controllers
             return View();
         }
 
-
-
     }
 }
