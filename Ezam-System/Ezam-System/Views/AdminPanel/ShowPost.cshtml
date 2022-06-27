@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PostFormModelForAdmin>
+
+
+
+
+@{
+    ViewData["Title"] = "Всички Публикации";
+}
+
+
+<div class="row">
+
+    @if (Model.Any())
+    {
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Име на публикувал</th>
+                    <th scope="col">Съобщение</th>
+                    <th scope="col">Промяна на информацията на публикация</th>
+                    <th scope="col">Изтриване на публикация</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var post in Model)
+                {
+                    
+                    <tr>
+                        <td>@post.FullName</td>
+                        <td>@post.Message</td>
+                        <td><a asp-controller="AdminPanel" asp-action="EditPost" asp-route-id="@post.Id" class="btn btn-warning">Променяне</a></td>
+                        <td><a asp-controller="AdminPanel" asp-action="DeletePost" asp-route-id="@post.Id" class="btn btn-danger">Изтрии</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <h1>Няма въведени публикации в момента</h1>
+    }
+
+</div>

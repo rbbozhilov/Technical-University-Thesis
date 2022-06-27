@@ -1,3 +1,54 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<AllPostDetailsViewModel>
+
+@{
+    ViewData["Title"] = "Съобщения";
+}
+
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+
+
+@if (Model.Any())
+{
+    <div class="container">
+        <div class="col-md-12 col-lg-12">
+
+            @foreach (var post in Model)
+            {
+                <article class="post vt-post">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
+                            <div class="author-info author-info-2">
+                                <ul class="list-inline">
+                                    <li>
+                                        <div class="info">
+                                            <p>Публикувано на:</p>
+                                            <strong>@post.DateTime.ToString("dddd, dd MMMM yyyy")</strong>
+                                        </div>
+                                    </li>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <li>
+                                        <div class="info">
+                                            <p>Публикувано от:</p>
+                                            <strong>@post.FullName</strong>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+                            <div class="caption">
+                                <p>@post.Message</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <h1 style="text-align:center">Няма добавени съобщения.</h1>
 }

@@ -1,6 +1,8 @@
 ﻿using Ezam_System.Models.Dissertation;
+using Ezam_System.Models.Post;
 using Ezam_System.Models.Staff;
 using Ezam_System.Services.Dissertations;
+using Ezam_System.Services.Posts;
 using Ezam_System.Services.Staffs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,12 +13,17 @@ namespace Ezam_System.Controllers
 
         private readonly IStaffService staffService;
         private readonly IDissertationService dissertationService;
+        private readonly IPostService postService;
 
 
-        public AdminPanelController(IStaffService staffService,IDissertationService dissertationService)
+        public AdminPanelController(
+                                    IStaffService staffService,
+                                    IDissertationService dissertationService,
+                                    IPostService postService)
         {
             this.staffService = staffService;
             this.dissertationService = dissertationService;
+            this.postService = postService;
         }
 
 
@@ -203,6 +210,92 @@ namespace Ezam_System.Controllers
 
             return View("Successfull");
         }
+
+
+        public IActionResult AddPost()
+          => View();
+
+        [HttpPost]
+        public IActionResult AddPost(PostFormModel postFormModel)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(postFormModel);
+            }
+
+
+            this.postService.Create(
+                                     postFormModel.FullName,
+                                     postFormModel.Message,
+                                     postFormModel.DateTime);
+
+
+            return RedirectToAction("Successfull");
+        }
+
+        public IActionResult EditPost(int id)
+        {
+            var currentPost = this.postService.GetPostById(id);
+
+            if (currentPost == null)
+            {
+                return BadRequest();
+            }
+
+
+            return View(new PostFormModel()
+            {
+                FullName = currentPost.FullName,
+                Message = currentPost.Message,
+                DateTime = currentPost.DateTime
+            });
+        }
+
+        [HttpPost]
+        public IActionResult EditPost(PostFormModel postFormModel, int id)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(postFormModel);
+            }
+
+            bool isEditted = this.postService.Edit(
+                                                    id,
+                                                    postFormModel.FullName,
+                                                    postFormModel.Message,
+                                                    postFormModel.DateTime);
+
+            if (!isEditted)
+            {
+                return BadRequest();
+            }
+
+
+            return RedirectToAction("Successfull");
+
+        }
+
+        public IActionResult ShowPost(IEnumerable<PostFormModelForAdmin> postModel)
+        {
+            postModel = this.postService.GetAllPostsForAdmin();
+
+            return View(postModel);
+        }
+
+
+        public IActionResult DeletePost(int id)
+        {
+
+            if (!this.postService.Delete(id))
+            {
+                return BadRequest();
+            }
+
+            return View("Successfull");
+        }
+
 
 
         public IActionResult SuccessFull()

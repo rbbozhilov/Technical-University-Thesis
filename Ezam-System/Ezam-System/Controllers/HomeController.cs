@@ -1,4 +1,5 @@
 ﻿using Ezam_System.Models;
+using Ezam_System.Services.Posts;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,11 +7,16 @@ namespace Ezam_System.Controllers
 {
     public class HomeController : Controller
     {
-     
-        public IActionResult Index()
+
+        private IPostService postService;
+
+        public HomeController(IPostService postService)
         {
-            return View();
+            this.postService = postService;
         }
+
+        public IActionResult Index()
+         => View(this.postService.GetAllPostsDetails());
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

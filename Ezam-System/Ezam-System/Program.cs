@@ -1,5 +1,6 @@
 using Ezam_System.Data;
 using Ezam_System.Services.Dissertations;
+using Ezam_System.Services.Posts;
 using Ezam_System.Services.Staffs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,13 +13,22 @@ builder.Services.AddDbContext<EzamDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireLowercase = false;
+})
+
     .AddEntityFrameworkStores<EzamDbContext>();
 builder.Services.AddControllersWithViews();
 
 
 builder.Services.AddTransient<IStaffService, StaffService>();
 builder.Services.AddTransient<IDissertationService, DissertationService>();
+builder.Services.AddTransient<IPostService, PostService>();
 
 
 var app = builder.Build();
