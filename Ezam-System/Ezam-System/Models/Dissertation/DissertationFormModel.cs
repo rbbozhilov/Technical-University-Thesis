@@ -6,7 +6,7 @@ namespace Ezam_System.Models.Dissertation
     {
 
         [Required(ErrorMessage = "Полето е задължително за попълване.")]
-        [Range(1,2000)]
+        [Range(1,2000 , ErrorMessage = "Номера трябва да е между 1 и 2000")]
         public int Number { get; set; }
 
         [Required(ErrorMessage = "Полето е задължително за попълване.")]

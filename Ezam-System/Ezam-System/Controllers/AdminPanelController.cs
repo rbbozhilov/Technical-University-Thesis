@@ -4,10 +4,12 @@ using Ezam_System.Models.Staff;
 using Ezam_System.Services.Dissertations;
 using Ezam_System.Services.Posts;
 using Ezam_System.Services.Staffs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ezam_System.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AdminPanelController : Controller
     {
 

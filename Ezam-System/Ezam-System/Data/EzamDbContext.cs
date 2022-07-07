@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ezam_System.Data
 {
-    public class EzamDbContext : IdentityDbContext
+    public class EzamDbContext : IdentityDbContext<User>
     {
         public EzamDbContext(DbContextOptions<EzamDbContext> options)
             : base(options)
