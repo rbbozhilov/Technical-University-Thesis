@@ -312,7 +312,6 @@ namespace Ezam_System.Controllers
         public IActionResult SuccessFull()
             => View();
 
-        [NonAction]
         private bool PhoneValidation(string phoneNumber)
         {
 
