@@ -45,69 +45,43 @@ Admin Role :
   Password: admin123
   
 
-## :framed_picture: Screenshot - Home page
+## :framed_picture: Screenshot - Home page/Message page Computer resolution/Phone resolution
 
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/homePage1.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/homePage3.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/HomePage2.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/HomePage5.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/HomePage6.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/HomePagePhone.jpg)
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/HomePagePhone2.jpg)
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/FooterPhone.jpg)
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/MenuPhone.jpg)
-
-## :framed_picture: Screenshot - Classes
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/classPage1.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/MyClassesPage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ClassesViewPage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ClassesPhone.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ClassPage2.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ClassDetails.jpg)
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/Messages-Computer.jpg)
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/Messages-Phone.jpg)
 
 
-## :framed_picture: Screenshot - Exercise
+## :framed_picture: Screenshot - Base Computer resolution/Phone resolution
 
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ExercisePage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ViewExercisePage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ExercisePhone.jpg)
-
-
-## :framed_picture: Screenshot - Shop
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ShopPage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ShopPhone.jpg)
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ProductsPhone.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ViewProductsPage.jpg)
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/Base-Computer2.jpg)
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/Base-Phonee.jpg)
 
 
-## :framed_picture: Screenshot - Wish List
+## :framed_picture: Screenshot - Menu Phone resolution
 
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/WishListPhone.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/WishListPage.jpg)
-
-
-## :framed_picture: Screenshot - Payment
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/PaymentPage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/PaymentPhone.jpg)
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/Menu-Phone.jpg)
 
 
-## :framed_picture: Screenshot - Trainers
+## :framed_picture: Screenshot - Publications Computer resolution/Phone resolution
 
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/TrainersPage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/TrainersPhone.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ViewTrainersPage.jpg)
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/Publication-Computer.jpg)
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/Publications-Phone.jpg)
 
 
-## :framed_picture: Screenshot - Recipes
+## :framed_picture: Screenshot - Dissertations Computer resolution/Phone resolution
 
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/RecipePage.jpg)
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/Dissertations-Computer.jpg)
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/Dissertations-Phone.jpg)
+
+
+## :framed_picture: Screenshot - History Phone resolution
+
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/History-Phone.jpg)
+
+
+## :framed_picture: Screenshot - Staff Phone resolution
+
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/Staff-Phone.jpg)
 
 
 ## :framed_picture: Screenshot - Contact
