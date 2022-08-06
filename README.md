@@ -19,71 +19,31 @@ This site was made as my thesis in Technical-University Sofia.Is on theme "dynam
 
 ## Functionality of Roles
 
-Guest Visitors:
+Guest Visitors/Logged Users:
 
-    - Can check recipes,shop (without buying),classes (only categories of classes)
-   
-Logged Users:
-
-    - Can add to wish list some products from shop and buy it
-    
-    - Can check all classes in some categorie and join in the class
-    
-    - Can calculate how much protein,Fat,Calories,Carbohydrates need to eat per day
-    
-    - Can candidate for trainer with candidature in main menu (Become Trainer)
-    
-Moderator User
-
-    - Have access to Admin Panel , but only for adding products,recipes,classes,exercises
+    - Full access to menu , only don't have access in admin panel
     
 Admin User
     Have full access in Admin Panel 
     
-    -Adding: classes,recipes,trainers,exercises,products
+    -Adding: staff,messages,trainers,dissertations
     
-    -Editting: classes,recipes,exercises,products
+    -Editting: staff,messages,trainers,dissertations
     
-    -Deleting: classes,recipes,exercises,products,trainers
+    -Deleting: staff,messages,trainers,dissertations
     
      
 
 ## :gear: Seeds
-
-### 1. Categories of classes
-It will seed authomatically categories for classes (Box,Mma,Wrestling...)
-
-### 2. Product Brands
-Seeding brands of products (Universal,MyProtein,Amix....)
-
-### 3. Product Types
-Seeding product types (Protein,Bcaa,L-Carnitine...)
-
-### 4. Types of exercises
-Seeding type of exercises (Biceps,Chest,Back..)
- 
-### 5. Users
-Seeding 20 users with 
-       Account Emaila/Username : user0@lionsky.net , user1@lionsky.net, user2@lionsky.net, user3@lionsky.net and like this too user19@lionsky.net
-       Account Password: user12 (For every users between user0@lionsky.net and user19@lionsky.net is same password)
-       
-### 5. UserRoles
-Seeding 2 Roles:
+  
+### 1. UserRoles
+Seeding 1 Role:
 
 Admin Role : 
 
-  Account Email/Username : admin@lionsky.net   
-  Password: admin12
-
-Moderator Role : 
-
-  Account Email/Username : moderator@lionsky.net   
-  Password: moderator12
-
-
-## :framed_picture: Screenshot - Database Diagram
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/Database.jpg)
+  Account Email/Username : admin@abv.bg  
+  Password: admin123
+  
 
 ## :framed_picture: Screenshot - Home page
 
