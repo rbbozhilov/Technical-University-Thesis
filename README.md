@@ -1,6 +1,10 @@
 # Ezam-System
 
-This site was made as my thesis in Technical-University Sofia.Is on theme "dynamic web site development",with some business requirements.The site will used for main site оf department of automation of electric drives ( this is one of departments in Technical-University Sofia in specialty automation engineer
+This site was made as my thesis in Technical-University Sofia. Is on theme "dynamic web site development",with some business requirements.The site will be used for main site оf department of automation of electric drives ( this is one of departments in Technical-University Sofia in specialty automation engineer).
+
+# Note:
+
+The site content in Razor Views is written on Bulgarian language , because that was one of the requirements, but all code/folders are on English language.
 
 ## :hammer_and_pick: Used Technologies
 
@@ -84,39 +88,8 @@ Admin Role :
 ![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/Staff-Phone.jpg)
 
 
-## :framed_picture: Screenshot - Contact
+## :framed_picture: Screenshot - Admin panel
 
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ContactPage.jpg)
-
-
-## :framed_picture: Screenshot - Calculator
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/CalculatorPage.jpg)
-
-
-## :framed_picture: Screenshot - Admin Panel
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/AddExercisePage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/AddProductAdminPanelPage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/AddProductPhone.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/AddRecipe.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/AddTrainerPage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/AdminPanelPage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/DeleteEditProductPage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/EditRemoveExercisePage.jpg)
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/EditRemoveRecipePage.jpg)
-
-## :framed_picture: Screenshot - Not Found 
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/NotFound.jpg)
-
-## :framed_picture: Screenshot - Bad Requests
-
-![alt text](https://github.com/rbbozhilov/LionSky-Project/blob/main/LionSky-Images/ElseErrorLikeBadRequestPage.jpg)
-
-
-
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/admin3.jpg)
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/admin2.jpg)
+![alt text](https://github.com/rbbozhilov/Technical-University-Thesis/blob/main/Images/admin1.jpg)
