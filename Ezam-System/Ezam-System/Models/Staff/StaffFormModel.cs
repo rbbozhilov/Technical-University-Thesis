@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Ezam_System.Infrastructure.AttributeValidations;
+using System.ComponentModel.DataAnnotations;
 
 namespace Ezam_System.Models.Staff
 {
@@ -23,6 +24,7 @@ namespace Ezam_System.Models.Staff
         [Required(ErrorMessage = "Полето е задължително за попълване.")]
         [MaxLength(20, ErrorMessage = "Не може да бъде над 20 символа.")]
         [MinLength(3, ErrorMessage = "Не може да бъде под 3 символа.")]
+        [PhoneNumber]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Полето е задължително за попълване.")]

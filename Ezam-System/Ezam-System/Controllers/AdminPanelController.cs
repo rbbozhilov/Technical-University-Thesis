@@ -43,19 +43,10 @@ namespace Ezam_System.Controllers
         public IActionResult AddStaff(StaffFormModel staffFormModel)
         {
 
-            var phoneNumber = staffFormModel.PhoneNumber;
-
-            if (!PhoneValidation(phoneNumber))
-            {
-                ModelState.AddModelError("WrongNumber", "Номера не е правилен , трябва да започва с (02/+359/088/089/088), Пример: 0882232323 или +359885757575");
-            }
-
-
             if (!ModelState.IsValid)
             {
                 return View(staffFormModel);
             }
-
 
             this.staffService.Create(
                                      staffFormModel.FullName,
@@ -312,22 +303,5 @@ namespace Ezam_System.Controllers
         public IActionResult SuccessFull()
             => View();
 
-        private bool PhoneValidation(string phoneNumber)
-        {
-
-            string firstPattern = @"^(0|\+359)(88|89|87)[0-9]{7}$";
-            string secondPattern = @"^02[0-9]{7}$";
-
-            var firstPatternRegex = new Regex(firstPattern);
-            var secondPatternRegex = new Regex(secondPattern);
-
-            if (!firstPatternRegex.IsMatch(phoneNumber) && !secondPatternRegex.IsMatch(phoneNumber))
-            {
-                return false;
-            }
-
-
-            return true;
-        }
     }
 }
