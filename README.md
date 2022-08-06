@@ -1,10 +1,10 @@
 # Ezam-System
 
-This site was made as my thesis in Technical-University Sofia.Is on theme "dynamic web site development",with some business requirements.The site will used for main site оf department of automation of electric drives ( this is one of departments in Technical-University Sofia in specialty automation engineer.
+This site was made as my thesis in Technical-University Sofia. Is on theme "dynamic web site development",with some business requirements.The site will be used for main site оf department of automation of electric drives ( this is one of departments in Technical-University Sofia in specialty automation engineer).
 
 # Note:
 
-The site content in razor views is written on Bulgarian language , because that was one of the requirements, but all code/folders are on English language.
+The site content in Razor Views is written on Bulgarian language , because that was one of the requirements, but all code/folders are on English language.
 
 ## :hammer_and_pick: Used Technologies
 
