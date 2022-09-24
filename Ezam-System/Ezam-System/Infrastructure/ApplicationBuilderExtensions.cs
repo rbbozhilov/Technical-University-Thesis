@@ -1,5 +1,6 @@
 ﻿using Ezam_System.Data;
 using Ezam_System.Data.Models;
+using Ezam_System.Data.Models.Exam;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +22,9 @@ namespace Ezam_System.Infrastructure
 
             //Add here seed
             SeedAdminRole(serviceProvider);
-      
+            SeedStatuses(data);
+            SeedTypes(data);
+
             return app;
         }
 
@@ -60,7 +63,44 @@ namespace Ezam_System.Infrastructure
                 .GetResult();
         }
 
+        private static void SeedStatuses(EzamDbContext db)
+        {
 
+            if (db.Statuses.Any())
+            {
+                return;
+            }
+
+            db.Statuses.AddRange(new[]
+            {
+                new Status() {StatusName = "Regular"},
+                new Status() {StatusName = "Corrective"},
+                new Status(){StatusName = "Liquidation"}
+            });
+
+            db.SaveChanges();
+
+        }
+
+        private static void SeedTypes(EzamDbContext db)
+        {
+
+            if (db.Types.Any())
+            {
+                return;
+            }
+
+            db.Types.AddRange(new[]
+            {
+                new Data.Models.Exam.Type() {SubjectName = "СЕРВОУПРАВЛЕНИЕ И ЗАДВИЖВАНЕ НА РОБОТИ"},
+                new Data.Models.Exam.Type() {SubjectName = "АВТОМАТИЗАЦИЯ НА ПРОИЗВОДСТВЕНИТЕ МЕХАНИЗМИ"},
+                new Data.Models.Exam.Type() {SubjectName = "СГРАДНА АВТОМАТИЗАЦИЯ"},
+                new Data.Models.Exam.Type() {SubjectName = "СИЛОВА И УПРАВЛЯВАЩА ЕЛЕКТРОНИКА В ЕЛЕКТРОЗАДВИЖВАНИЯТА"},
+                new Data.Models.Exam.Type() {SubjectName = "УПРАВЛЕНИЕ НА ЕЛЕКТРОЗАДВИЖВАНИЯТА "},
+            });
+
+            db.SaveChanges();
+        }
 
     }
 }
