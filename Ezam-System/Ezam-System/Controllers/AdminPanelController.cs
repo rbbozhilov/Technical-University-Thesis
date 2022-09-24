@@ -1,7 +1,9 @@
 ﻿using Ezam_System.Models.Dissertation;
+using Ezam_System.Models.Exam;
 using Ezam_System.Models.Post;
 using Ezam_System.Models.Staff;
 using Ezam_System.Services.Dissertations;
+using Ezam_System.Services.Exams;
 using Ezam_System.Services.Posts;
 using Ezam_System.Services.Staffs;
 using Microsoft.AspNetCore.Authorization;
@@ -16,24 +18,66 @@ namespace Ezam_System.Controllers
         private readonly IStaffService staffService;
         private readonly IDissertationService dissertationService;
         private readonly IPostService postService;
+        private readonly IExamService examService;
 
 
         public AdminPanelController(
                                     IStaffService staffService,
                                     IDissertationService dissertationService,
-                                    IPostService postService)
+                                    IPostService postService,
+                                    IExamService examService)
         {
             this.staffService = staffService;
             this.dissertationService = dissertationService;
             this.postService = postService;
+            this.examService = examService;
         }
 
 
         public IActionResult Index()
+        => this.View();
+
+        public IActionResult AddExam()
         {
-            return View();
+            return this.View(new ExamFormModel()
+            {
+                Type = this.examService.GetAllTypes(),
+                Status = this.examService.GetAllStatuses()
+            });
         }
 
+        [HttpPost]
+        public IActionResult AddExam(ExamFormModel examFormModel)
+        {
+            if (!this.examService.IsHaveType(examFormModel.TypeId))
+            {
+                this.ModelState.AddModelError(nameof(examFormModel.TypeId), "Don't make some hack tries!");
+            }
+
+            if (!this.examService.isHaveStatus(examFormModel.StatusId))
+            {
+                this.ModelState.AddModelError(nameof(examFormModel.StatusId), "Don't make some hack tries!");
+            }
+
+
+            if (!ModelState.IsValid)
+            {
+                examFormModel.Type = this.examService.GetAllTypes();
+                examFormModel.Status = this.examService.GetAllStatuses();
+
+                return View(examFormModel);
+            }
+
+            this.examService.AddExam(
+                                     examFormModel.Hall,
+                                     examFormModel.Date,
+                                     examFormModel.Time,
+                                     examFormModel.TypeId,
+                                     examFormModel.StatusId);
+
+            return View("Index");
+
+        }
 
         public IActionResult AddStaff()
             => View();
