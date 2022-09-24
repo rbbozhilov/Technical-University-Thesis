@@ -3,7 +3,9 @@
     public class ExamViewModel
     {
 
-        public IEnumerable<Data.Models.Exam.Type> Types { get; set; }
+        public string Type { get; set; }
+
+        public IEnumerable<string> Types { get; set; }
 
         public IEnumerable<InformationViewModel> ExamInformation { get; set; }
 

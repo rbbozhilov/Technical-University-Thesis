@@ -2,6 +2,7 @@ using Ezam_System.Data;
 using Ezam_System.Data.Models;
 using Ezam_System.Infrastructure;
 using Ezam_System.Services.Dissertations;
+using Ezam_System.Services.Exams;
 using Ezam_System.Services.Posts;
 using Ezam_System.Services.Staffs;
 using Microsoft.AspNetCore.Identity;
@@ -36,6 +37,7 @@ builder.Services.AddControllersWithViews(options =>
 builder.Services.AddTransient<IStaffService, StaffService>();
 builder.Services.AddTransient<IDissertationService, DissertationService>();
 builder.Services.AddTransient<IPostService, PostService>();
+builder.Services.AddTransient<IExamService, ExamService>();
 
 
 var app = builder.Build();

@@ -1,6 +1,22 @@
-﻿namespace Ezam_System.Views.Exam
-{
-    public class Index
-    {
-    }
+﻿@model ExamViewModel
+
+ @{
+    ViewData["Title"] = "Търсене на изпити";
 }
+
+
+<form method="get">
+    <div class="row-mb-5">
+        <div class="form-group col-md-4">
+            <div class="form-group">
+                <select asp-for="Type" class="form-control">
+                    @foreach (var type in Model.Types)
+                    {
+                        <option value=@type>@type</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>

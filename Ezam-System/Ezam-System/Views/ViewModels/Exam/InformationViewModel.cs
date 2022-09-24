@@ -9,7 +9,9 @@
 
         public DateTime Date { get; set; }
 
-        public string TypeName { get; set; }
+        public DateTime Time { get; set; }
+
+        public string Hall { get; set; }
 
     }
 }

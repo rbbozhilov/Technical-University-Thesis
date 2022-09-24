@@ -12,6 +12,13 @@ namespace Ezam_System.Data.Models.Exam
         [Required]
         public DateTime Date { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string Hall { get; set; }
+
+        [Required]
+        public DateTime Time { get; set; }
+
         [ForeignKey(nameof(Type))]
         public int TypeId { get; set; }
 
