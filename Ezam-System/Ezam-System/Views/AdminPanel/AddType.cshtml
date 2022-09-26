@@ -1,6 +1,19 @@
-﻿namespace Ezam_System.Views.AdminPanel
-{
-    public class AddType
-    {
-    }
+﻿@model TypeFormModel
+
+@{
+    ViewData["Title"] = "Добавяне на предмет";
+}
+
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="SubjectName">Име на предмет</label>
+        <input asp-for="SubjectName" type="text" class="form-control">
+        <span asp-validation-for="SubjectName" class="small text-danger"> </span>
+    </div>
+    <button type="submit" class="btn btn-primary">Запази</button>
+</form>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
 }

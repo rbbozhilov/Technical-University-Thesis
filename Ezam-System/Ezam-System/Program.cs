@@ -38,6 +38,7 @@ builder.Services.AddTransient<IStaffService, StaffService>();
 builder.Services.AddTransient<IDissertationService, DissertationService>();
 builder.Services.AddTransient<IPostService, PostService>();
 builder.Services.AddTransient<IExamService, ExamService>();
+builder.Services.AddTransient<ITypeService, TypeService>();
 
 
 var app = builder.Build();

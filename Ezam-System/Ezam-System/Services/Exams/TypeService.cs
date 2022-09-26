@@ -1,4 +1,5 @@
 ﻿using Ezam_System.Data;
+using Ezam_System.Models.Exam;
 
 namespace Ezam_System.Services.Exams
 {
@@ -24,21 +25,6 @@ namespace Ezam_System.Services.Exams
             this.data.SaveChanges();
         }
 
-        public bool DeleteType(int id)
-        {
-            var currentType = this.data.Types.FirstOrDefault(x => x.Id == id);
-
-            if (currentType == null)
-            {
-                return false;
-            }
-
-            this.data.Types.Remove(currentType);
-            this.data.SaveChanges();
-
-            return true;
-        }
-
         public bool EditType(int id, string subjectName)
         {
             var currentType = this.data.Types.FirstOrDefault(x => x.Id == id);
@@ -54,5 +40,12 @@ namespace Ezam_System.Services.Exams
 
             return true;
         }
+
+        public IEnumerable<TypeFormModelForAdmin> GetTypes()
+        => this.data.Types.Select(x => new TypeFormModelForAdmin
+        {
+            Id = x.Id,
+            SubjectName = x.SubjectName,
+        });
     }
 }

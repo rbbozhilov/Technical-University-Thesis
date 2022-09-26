@@ -1,5 +1,6 @@
 ﻿using Ezam_System.Data;
 using Ezam_System.Data.Models.Exam;
+using Ezam_System.Models.Exam;
 using Ezam_System.Views.ViewModels.Exam;
 
 namespace Ezam_System.Services.Exams
@@ -46,7 +47,7 @@ namespace Ezam_System.Services.Exams
             return true;
         }
 
-        public bool EditExam(int id, string hall, DateTime date, DateTime time, int typeId, int statusId)
+        public bool EditExam(int id, string hall, DateTime date, DateTime time, int statusId)
         {
             var currentExam = this.data.Exams.FirstOrDefault(x => x.Id == id);
 
@@ -58,7 +59,6 @@ namespace Ezam_System.Services.Exams
             currentExam.Hall = hall;
             currentExam.Date = date;
             currentExam.Time = time;
-            currentExam.TypeId = typeId;
             currentExam.StatusId = statusId;
 
             this.data.SaveChanges();
@@ -85,6 +85,21 @@ namespace Ezam_System.Services.Exams
                       })
                       .ToList();
 
+        public ExamEditFormModel GetExamById(int id)
+        => this.data.Exams
+                        .Where(x => x.Id == id)
+                        .Select(x => new ExamEditFormModel())
+                        .FirstOrDefault();
+
+        public IEnumerable<ExamFormModelForAdmin> GetExamsForAdminView()
+        => this.data.Exams
+                      .Select(x => new ExamFormModelForAdmin
+                      {
+                          Id = x.Id,
+                          Date = x.Date,
+                          StatusName = x.Status.StatusName,
+                          SubjectName = x.Type.SubjectName
+                      }).ToList();
 
         public IEnumerable<InformationViewModel> GetInformation(string type)
         => data.Exams

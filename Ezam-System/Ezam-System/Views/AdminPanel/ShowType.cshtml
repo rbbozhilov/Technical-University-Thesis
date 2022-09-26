@@ -1,6 +1,35 @@
-﻿namespace Ezam_System.Views.AdminPanel
-{
-    public class ShowType
-    {
-    }
+﻿@model IEnumerable<TypeFormModelForAdmin>
+
+@{
+    ViewData["Title"] = "Всички предмети";
 }
+
+<div class="row">
+
+    @if (Model.Any())
+    {
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Име на изпит</th>
+                    <th scope="col">Промяна на информацията на изпит</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var type in Model)
+                {
+                    <tr>
+                        <td>@type.SubjectName</td>
+                        <td><a asp-controller="AdminPanel" asp-action="EditType" asp-route-id="@type.Id" class="btn btn-warning">Променяне</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h1>Няма въведени изпити в момента</h1>
+    }
+
+</div>

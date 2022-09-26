@@ -1,6 +1,42 @@
-﻿namespace Ezam_System.Views.AdminPanel
-{
-    public class ShowExam
-    {
-    }
+﻿@model IEnumerable<ExamFormModelForAdmin>
+
+@{
+    ViewData["Title"] = "Всички изпити";
 }
+
+<div class="row">
+
+    @if (Model.Any())
+    {
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Име на изпит</th>
+                    <th scope="col">Дата на изпит</th>
+                    <th scope="col">Статус на изпит</th>
+                    <th scope="col">Промяна на информацията на изпит</th>
+                    <th scope="col">Изтриване на изпит</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var exam in Model)
+                {
+
+                    <tr>
+                        <td>@exam.SubjectName</td>
+                        <td>@exam.Date.ToString("MMMM dd")</td>
+                        <td>@exam.StatusName</td>
+                        <td><a asp-controller="AdminPanel" asp-action="EditExam" asp-route-id="@exam.Id" class="btn btn-warning">Променяне</a></td>
+                        <td><a asp-controller="AdminPanel" asp-action="DeleteExam" asp-route-id="@exam.Id" class="btn btn-danger">Изтрии</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h1>Няма въведени изпити в момента</h1>
+    }
+
+</div>

@@ -1,4 +1,6 @@
-﻿namespace Ezam_System.Services.Exams
+﻿using Ezam_System.Models.Exam;
+
+namespace Ezam_System.Services.Exams
 {
     public interface ITypeService
     {
@@ -10,7 +12,6 @@
                       int id,
                       string subjectName);
 
-        bool DeleteType(int id);
-
+        IEnumerable<TypeFormModelForAdmin> GetTypes();
     }
 }

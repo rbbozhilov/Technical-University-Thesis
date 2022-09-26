@@ -1,6 +1,50 @@
-﻿namespace Ezam_System.Views.AdminPanel
-{
-    public class EditExam
-    {
-    }
+﻿@model ExamEditFormModel
+
+@{
+    ViewData["Title"] = "Промяна на изпит";
+}
+
+<div class="row">
+    <div class="offset-md-3 col-md-6 col-sm-12 ">
+
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Hall">Зала</label>
+                <input asp-for="Hall" type="text" class="form-control">
+                <span asp-validation-for="Hall" class="small text-danger"> </span>
+            </div>
+
+           <div class="form-group">
+                <label asp-for="Date">Дата на изпита</label>
+                <input asp-for="Date" type="date" class="form-control">
+                <span asp-validation-for="Date" class="small text-danger"> </span>
+            </div>
+
+           <div class="form-group">
+                <label asp-for="Time">Час на изпита</label>
+                <input asp-for="Time" type="time" class="form-control">
+                <span asp-validation-for="Time" class="small text-danger"> </span>
+            </div>
+            <br />
+        
+            <div class="form-group">
+                <label asp-for="StatusId">Изберете статус</label>
+                <select asp-for="StatusId" class="form-control form-control-sm">
+
+                    @foreach (var current in Model.Status)
+                    {
+                        <option value="@current.Id">@current.StatusName</option>
+                    }
+                </select>
+                <span asp-validation-for="StatusId" class="small text-danger"> </span>
+            </div>
+
+            <br />
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
 }

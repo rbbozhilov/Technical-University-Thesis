@@ -19,23 +19,75 @@ namespace Ezam_System.Controllers
         private readonly IDissertationService dissertationService;
         private readonly IPostService postService;
         private readonly IExamService examService;
+        private readonly ITypeService typeService;
 
 
         public AdminPanelController(
                                     IStaffService staffService,
                                     IDissertationService dissertationService,
                                     IPostService postService,
-                                    IExamService examService)
+                                    IExamService examService,
+                                    ITypeService typeService)
         {
             this.staffService = staffService;
             this.dissertationService = dissertationService;
             this.postService = postService;
             this.examService = examService;
+            this.typeService = typeService;
         }
 
 
         public IActionResult Index()
         => this.View();
+
+
+        public IActionResult AddType()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult AddType(TypeFormModel typeModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(typeModel);
+            }
+
+            this.typeService.AddType(typeModel.SubjectName);
+
+            return View("Index");
+        }
+
+        public IActionResult EditType()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult EditType(TypeFormModel typeModel,int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(typeModel);
+            }
+
+            bool isEditted = this.typeService.EditType(id, typeModel.SubjectName);
+
+            if (!isEditted)
+            {
+                return BadRequest();
+            }
+
+            return View("Index");
+        }
+
+        public IActionResult ShowType(IEnumerable<TypeFormModelForAdmin> types)
+        {
+            types = this.typeService.GetTypes();
+
+            return this.View(types);
+        }
 
         public IActionResult AddExam()
         {
@@ -76,7 +128,69 @@ namespace Ezam_System.Controllers
                                      examFormModel.StatusId);
 
             return View("Index");
+        }
 
+        public IActionResult EditExam(int id)
+        {
+
+            var currentExam = this.examService.GetExamById(id);
+
+            if(currentExam == null)
+            {
+                return BadRequest();
+            }
+
+            return this.View(new ExamEditFormModel
+            {
+                Status = this.examService.GetAllStatuses()
+            });
+        }
+
+        [HttpPost]
+        public IActionResult EditExam(ExamEditFormModel editFormModel, int id)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                editFormModel.Status = this.examService.GetAllStatuses();
+
+                return this.View(editFormModel);
+            }
+
+            bool isEditted = this.examService.EditExam(
+                                        id,
+                                        editFormModel.Hall,
+                                        editFormModel.Date,
+                                        editFormModel.Time,
+                                        editFormModel.StatusId);
+
+            if (!isEditted)
+            {
+                return BadRequest();
+            }
+
+            return View("Index");
+
+        }
+
+        public IActionResult DeleteExam(int id)
+        {
+
+            bool isDeleted = this.examService.DeleteExam(id);
+
+            if(!isDeleted)
+            {
+                return BadRequest();
+            }
+
+            return View("Index");
+        }
+
+        public IActionResult ShowExam(IEnumerable<ExamFormModelForAdmin> examFormModel)
+        {
+            examFormModel = this.examService.GetExamsForAdminView();
+
+            return View(examFormModel);
         }
 
         public IActionResult AddStaff()

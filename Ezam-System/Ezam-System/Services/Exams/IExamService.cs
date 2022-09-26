@@ -1,4 +1,5 @@
-﻿using Ezam_System.Views.ViewModels.Exam;
+﻿using Ezam_System.Models.Exam;
+using Ezam_System.Views.ViewModels.Exam;
 
 namespace Ezam_System.Services.Exams
 {
@@ -17,7 +18,6 @@ namespace Ezam_System.Services.Exams
                       string hall,
                       DateTime date,
                       DateTime time,
-                      int typeId,
                       int statusId);
 
         bool DeleteExam(int id);
@@ -26,6 +26,7 @@ namespace Ezam_System.Services.Exams
 
         bool isHaveStatus(int statusId);
 
+        ExamEditFormModel GetExamById(int id);
 
         IEnumerable<string> Types();
 
@@ -35,5 +36,6 @@ namespace Ezam_System.Services.Exams
 
         IEnumerable<InformationViewModel> GetInformation(string type);
 
+        IEnumerable<ExamFormModelForAdmin> GetExamsForAdminView();
     }
 }
