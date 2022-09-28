@@ -6,21 +6,21 @@ namespace Ezam_System.Services.Exams
     public interface IExamService
     {
 
-        void AddExam(
+        Task AddExamAsync(
                      string hall,
                      DateTime date,
                      DateTime time,
                      int typeId,
                      int statusId);
 
-        bool EditExam(
+        Task<bool> EditExamAsync(
                       int id,
                       string hall,
                       DateTime date,
                       DateTime time,
                       int statusId);
 
-        bool DeleteExam(int id);
+        Task<bool> DeleteExamAsync(int id);
 
         bool IsHaveType(int typeId);
 

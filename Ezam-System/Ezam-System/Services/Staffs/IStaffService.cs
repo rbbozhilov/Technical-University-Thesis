@@ -6,7 +6,7 @@ namespace Ezam_System.Services.Staffs
     public interface IStaffService
     {
 
-        void Create(
+        Task CreateAsync(
                   string fullname,
                   string position,
                   string email,
@@ -15,7 +15,7 @@ namespace Ezam_System.Services.Staffs
                   string office);
 
 
-        bool Edit(
+        Task<bool> EditAsync(
                   int id,
                   string fullname,
                   string position,
@@ -24,7 +24,7 @@ namespace Ezam_System.Services.Staffs
                   string imageUrl,
                   string office);
 
-        bool Delete(int id);
+        Task<bool> DeleteAsync(int id);
 
         StaffFormModel GetStaffById(int id);
 

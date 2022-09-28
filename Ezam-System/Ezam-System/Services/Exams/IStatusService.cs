@@ -4,14 +4,14 @@
     {
 
 
-        void AddStatus(
+        Task AddStatusAsync(
              string statusName);
 
-        bool EditStatus(
+        Task<bool> EditStatusAsync(
                       int id,
                       string statusName);
 
-        bool DeleteStatus(int id);
+        Task<bool> DeleteStatusAsync(int id);
 
     }
 }

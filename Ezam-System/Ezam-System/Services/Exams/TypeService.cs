@@ -14,18 +14,18 @@ namespace Ezam_System.Services.Exams
         }
 
 
-        public void AddType(string subjectName)
+        public async Task AddTypeAsync(string subjectName)
         {
             var type = new Ezam_System.Data.Models.Exam.Type()
             {
                 SubjectName = subjectName,
             };
 
-            this.data.Types.Add(type);
-            this.data.SaveChanges();
+            await this.data.Types.AddAsync(type);
+            await this.data.SaveChangesAsync();
         }
 
-        public bool EditType(int id, string subjectName)
+        public async Task<bool> EditTypeAsync(int id, string subjectName)
         {
             var currentType = this.data.Types.FirstOrDefault(x => x.Id == id);
 
@@ -36,7 +36,7 @@ namespace Ezam_System.Services.Exams
 
             currentType.SubjectName = subjectName;
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
             return true;
         }

@@ -13,18 +13,18 @@ namespace Ezam_System.Services.Exams
             this.data = data;
         }
 
-        public void AddStatus(string statusName)
+        public async Task AddStatusAsync(string statusName)
         {
             var status = new Status()
             {
                 StatusName = statusName
             };
 
-            this.data.Statuses.Add(status);
-            this.data.SaveChanges();
+            await this.data.Statuses.AddAsync(status);
+            await this.data.SaveChangesAsync();
         }
 
-        public bool DeleteStatus(int id)
+        public async Task<bool> DeleteStatusAsync(int id)
         {
             var currentStatus = this.data.Statuses.FirstOrDefault(x => x.Id == id);
 
@@ -34,12 +34,12 @@ namespace Ezam_System.Services.Exams
             }
 
             this.data.Statuses.Remove(currentStatus);
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
             return true;
         }
 
-        public bool EditStatus(int id, string statusName)
+        public async Task<bool> EditStatusAsync(int id, string statusName)
         {
             var currentStatus = this.data.Statuses.FirstOrDefault(x => x.Id == id);
 
@@ -49,7 +49,7 @@ namespace Ezam_System.Services.Exams
             }
 
             currentStatus.StatusName = statusName;
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
             return true;
         }

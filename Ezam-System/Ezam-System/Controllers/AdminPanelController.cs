@@ -47,14 +47,14 @@ namespace Ezam_System.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddType(TypeFormModel typeModel)
+        public async Task<IActionResult> AddType(TypeFormModel typeModel)
         {
             if (!ModelState.IsValid)
             {
                 return View(typeModel);
             }
 
-            this.typeService.AddType(typeModel.SubjectName);
+            await this.typeService.AddTypeAsync(typeModel.SubjectName);
 
             return View("Index");
         }
@@ -65,14 +65,14 @@ namespace Ezam_System.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditType(TypeFormModel typeModel,int id)
+        public async Task<IActionResult> EditType(TypeFormModel typeModel, int id)
         {
             if (!ModelState.IsValid)
             {
                 return View(typeModel);
             }
 
-            bool isEditted = this.typeService.EditType(id, typeModel.SubjectName);
+            bool isEditted = await this.typeService.EditTypeAsync(id, typeModel.SubjectName);
 
             if (!isEditted)
             {
@@ -99,7 +99,7 @@ namespace Ezam_System.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddExam(ExamFormModel examFormModel)
+        public async Task<IActionResult> AddExam(ExamFormModel examFormModel)
         {
             if (!this.examService.IsHaveType(examFormModel.TypeId))
             {
@@ -120,7 +120,7 @@ namespace Ezam_System.Controllers
                 return View(examFormModel);
             }
 
-            this.examService.AddExam(
+            await this.examService.AddExamAsync(
                                      examFormModel.Hall,
                                      examFormModel.Date,
                                      examFormModel.Time,
@@ -135,7 +135,7 @@ namespace Ezam_System.Controllers
 
             var currentExam = this.examService.GetExamById(id);
 
-            if(currentExam == null)
+            if (currentExam == null)
             {
                 return BadRequest();
             }
@@ -147,7 +147,7 @@ namespace Ezam_System.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditExam(ExamEditFormModel editFormModel, int id)
+        public async Task<IActionResult> EditExam(ExamEditFormModel editFormModel, int id)
         {
 
             if (!ModelState.IsValid)
@@ -157,7 +157,7 @@ namespace Ezam_System.Controllers
                 return this.View(editFormModel);
             }
 
-            bool isEditted = this.examService.EditExam(
+            bool isEditted = await this.examService.EditExamAsync(
                                         id,
                                         editFormModel.Hall,
                                         editFormModel.Date,
@@ -173,12 +173,12 @@ namespace Ezam_System.Controllers
 
         }
 
-        public IActionResult DeleteExam(int id)
+        public async Task<IActionResult> DeleteExam(int id)
         {
 
-            bool isDeleted = this.examService.DeleteExam(id);
+            bool isDeleted = await this.examService.DeleteExamAsync(id);
 
-            if(!isDeleted)
+            if (!isDeleted)
             {
                 return BadRequest();
             }
@@ -197,7 +197,7 @@ namespace Ezam_System.Controllers
             => View();
 
         [HttpPost]
-        public IActionResult AddStaff(StaffFormModel staffFormModel)
+        public async Task<IActionResult> AddStaff(StaffFormModel staffFormModel)
         {
 
             if (!ModelState.IsValid)
@@ -205,7 +205,7 @@ namespace Ezam_System.Controllers
                 return View(staffFormModel);
             }
 
-            this.staffService.Create(
+            await this.staffService.CreateAsync(
                                      staffFormModel.FullName,
                                      staffFormModel.Position,
                                      staffFormModel.Email,
@@ -239,7 +239,7 @@ namespace Ezam_System.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditStaff(StaffFormModel staffFormModel, int id)
+        public async Task<IActionResult> EditStaff(StaffFormModel staffFormModel, int id)
         {
 
             if (!ModelState.IsValid)
@@ -247,7 +247,7 @@ namespace Ezam_System.Controllers
                 return View(staffFormModel);
             }
 
-            bool isEditted = this.staffService.Edit(
+            bool isEditted = await this.staffService.EditAsync(
                                                     id,
                                                     staffFormModel.FullName,
                                                     staffFormModel.Position,
@@ -274,10 +274,12 @@ namespace Ezam_System.Controllers
         }
 
 
-        public IActionResult DeleteStaff(int id)
+        public async Task<IActionResult> DeleteStaff(int id)
         {
 
-            if (!this.staffService.Delete(id))
+            bool isDeleted = await this.staffService.DeleteAsync(id);
+
+            if (!isDeleted)
             {
                 return BadRequest();
             }
@@ -290,7 +292,7 @@ namespace Ezam_System.Controllers
            => View();
 
         [HttpPost]
-        public IActionResult AddDissertation(DissertationFormModel dissertationFormModel)
+        public async Task<IActionResult> AddDissertation(DissertationFormModel dissertationFormModel)
         {
 
             if (!ModelState.IsValid)
@@ -299,10 +301,10 @@ namespace Ezam_System.Controllers
             }
 
 
-            this.dissertationService.Create(
-                                            dissertationFormModel.FullName,
-                                            dissertationFormModel.Number,
-                                            dissertationFormModel.Supervisor);
+            await this.dissertationService.CreateAsync(
+                                             dissertationFormModel.FullName,
+                                             dissertationFormModel.Number,
+                                             dissertationFormModel.Supervisor);
 
 
             return RedirectToAction("Successfull");
@@ -327,7 +329,7 @@ namespace Ezam_System.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditDissertation(DissertationFormModel dissertationFormModel, int id)
+        public async Task<IActionResult> EditDissertation(DissertationFormModel dissertationFormModel, int id)
         {
 
             if (!ModelState.IsValid)
@@ -335,7 +337,7 @@ namespace Ezam_System.Controllers
                 return View(dissertationFormModel);
             }
 
-            bool isEditted = this.dissertationService.Edit(
+            bool isEditted = await this.dissertationService.EditAsync(
                                                     id,
                                                     dissertationFormModel.FullName,
                                                     dissertationFormModel.Number,
@@ -359,10 +361,12 @@ namespace Ezam_System.Controllers
         }
 
 
-        public IActionResult DeleteDissertation(int id)
+        public async Task<IActionResult> DeleteDissertation(int id)
         {
 
-            if (!this.dissertationService.Delete(id))
+            var isDeleted = await this.dissertationService.DeleteAsync(id);
+
+            if (!isDeleted)
             {
                 return BadRequest();
             }
@@ -375,7 +379,7 @@ namespace Ezam_System.Controllers
           => View();
 
         [HttpPost]
-        public IActionResult AddPost(PostFormModel postFormModel)
+        public async Task<IActionResult> AddPost(PostFormModel postFormModel)
         {
 
             if (!ModelState.IsValid)
@@ -384,10 +388,10 @@ namespace Ezam_System.Controllers
             }
 
 
-            this.postService.Create(
-                                     postFormModel.FullName,
-                                     postFormModel.Message,
-                                     postFormModel.DateTime);
+            await this.postService.CreateAsync(
+                                      postFormModel.FullName,
+                                      postFormModel.Message,
+                                      postFormModel.DateTime);
 
 
             return RedirectToAction("Successfull");
@@ -412,7 +416,7 @@ namespace Ezam_System.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditPost(PostFormModel postFormModel, int id)
+        public async Task<IActionResult> EditPost(PostFormModel postFormModel, int id)
         {
 
             if (!ModelState.IsValid)
@@ -420,7 +424,7 @@ namespace Ezam_System.Controllers
                 return View(postFormModel);
             }
 
-            bool isEditted = this.postService.Edit(
+            bool isEditted = await this.postService.EditAsync(
                                                     id,
                                                     postFormModel.FullName,
                                                     postFormModel.Message,
@@ -444,10 +448,12 @@ namespace Ezam_System.Controllers
         }
 
 
-        public IActionResult DeletePost(int id)
+        public async Task<IActionResult> DeletePost(int id)
         {
 
-            if (!this.postService.Delete(id))
+            bool isDeleted = await this.postService.DeleteAsync(id);
+
+            if (!isDeleted)
             {
                 return BadRequest();
             }

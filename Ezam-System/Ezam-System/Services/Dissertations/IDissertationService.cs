@@ -6,19 +6,19 @@ namespace Ezam_System.Services.Dissertations
     public interface IDissertationService
     {
 
-        void Create(
+        Task CreateAsync(
                   string fullname,
                   int number,
                   string supervisor);
 
 
-        bool Edit(
+        Task<bool> EditAsync(
                   int id,
                   string fullname,
                   int number,
                   string supervisor);
 
-        bool Delete(int id);
+        Task<bool> DeleteAsync(int id);
 
         DissertationFormModel GetDissertationById(int id);
 

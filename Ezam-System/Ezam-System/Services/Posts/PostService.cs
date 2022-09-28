@@ -16,7 +16,7 @@ namespace Ezam_System.Services.Posts
         }
 
 
-        public void Create(string fullname, string message, DateTime dateTime)
+        public async Task CreateAsync(string fullname, string message, DateTime dateTime)
         {
             var newPost = new Post()
             {
@@ -25,12 +25,12 @@ namespace Ezam_System.Services.Posts
                 DateTime = dateTime
             };
 
-            this.data.Posts.Add(newPost);
+            await this.data.Posts.AddAsync(newPost);
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
         }
 
-        public bool Delete(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var currentPost = this.data.Posts
                                        .Where(p => p.Id == id && p.IsDeleted == false)
@@ -44,12 +44,12 @@ namespace Ezam_System.Services.Posts
 
             currentPost.IsDeleted = true;
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
             return true;
         }
 
-        public bool Edit(int id, string fullname, string message, DateTime dateTime)
+        public async Task<bool> EditAsync(int id, string fullname, string message, DateTime dateTime)
         {
             var currentPost = this.data.Posts
                                    .Where(p => p.Id == id && p.IsDeleted == false)
@@ -65,7 +65,7 @@ namespace Ezam_System.Services.Posts
             currentPost.Message = message;
             currentPost.DateTime = dateTime;
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
             return true;
         }

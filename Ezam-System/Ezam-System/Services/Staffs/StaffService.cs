@@ -17,7 +17,7 @@ namespace Ezam_System.Services.Staffs
         }
 
 
-        public void Create(
+        public async Task CreateAsync(
                            string fullname,
                            string position,
                            string email,
@@ -36,13 +36,13 @@ namespace Ezam_System.Services.Staffs
                 Office = office
             };
 
-            this.data.Staff.Add(newStaff);
+            await this.data.Staff.AddAsync(newStaff);
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
         }
 
-        public bool Delete(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var currentStaff = this.data.Staff
                                         .Where(s => s.Id == id && s.IsDeleted == false)
@@ -56,12 +56,12 @@ namespace Ezam_System.Services.Staffs
 
             currentStaff.IsDeleted = true;
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
             return true;
         }
 
-        public bool Edit(
+        public async Task<bool> EditAsync(
                          int id,
                          string fullname,
                          string position,
@@ -87,7 +87,7 @@ namespace Ezam_System.Services.Staffs
             currentStaff.ImageUrl = imageUrl;
             currentStaff.Office = office;
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
             return true;
         }

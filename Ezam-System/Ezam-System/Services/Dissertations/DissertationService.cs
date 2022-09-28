@@ -15,7 +15,7 @@ namespace Ezam_System.Services.Dissertations
             this.data = data;
         }
 
-        public void Create(string fullname, int number, string supervisor)
+        public async Task CreateAsync(string fullname, int number, string supervisor)
         {
             var newDissertation = new Dissertation()
             {
@@ -24,12 +24,12 @@ namespace Ezam_System.Services.Dissertations
                 Supervisor = supervisor
             };
 
-            this.data.Dissertations.Add(newDissertation);
+            await this.data.Dissertations.AddAsync(newDissertation);
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
         }
 
-        public bool Delete(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var currentDissertation = this.data.Dissertations
                                        .Where(d => d.Id == id && d.IsDeleted == false)
@@ -40,15 +40,14 @@ namespace Ezam_System.Services.Dissertations
                 return false;
             }
 
-
             currentDissertation.IsDeleted = true;
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
             return true;
         }
 
-        public bool Edit(int id, string fullname, int number, string supervisor)
+        public async Task<bool> EditAsync(int id, string fullname, int number, string supervisor)
         {
             var currentDissertation = this.data.Dissertations
                                       .Where(d => d.Id == id && d.IsDeleted == false)
@@ -64,7 +63,7 @@ namespace Ezam_System.Services.Dissertations
             currentDissertation.Number = number;
             currentDissertation.Supervisor = supervisor;
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
             return true;
         }

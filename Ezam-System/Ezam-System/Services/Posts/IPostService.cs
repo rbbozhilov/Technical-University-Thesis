@@ -6,19 +6,19 @@ namespace Ezam_System.Services.Posts
     public interface IPostService
     {
 
-        void Create(
+        Task CreateAsync(
                   string fullname,
                   string message,
                   DateTime dateTime);
 
 
-        bool Edit(
+        Task<bool> EditAsync(
                   int id,
                   string fullname,
                   string message,
                   DateTime dateTime);
 
-        bool Delete(int id);
+        Task<bool> DeleteAsync(int id);
 
         PostFormModel GetPostById(int id);
 

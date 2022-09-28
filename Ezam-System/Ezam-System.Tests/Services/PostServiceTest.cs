@@ -14,7 +14,7 @@ namespace Ezam_System.Tests.Services
     {
 
         [Fact]
-        public void AddPost_ShouldReturnTrue()
+        public async Task AddPost_ShouldReturnTrue()
         {
 
             //Arrange
@@ -28,7 +28,7 @@ namespace Ezam_System.Tests.Services
 
             //Act
 
-            postService.Create(
+            await postService.CreateAsync(
                                fullName,
                                message,
                                date);
@@ -49,7 +49,7 @@ namespace Ezam_System.Tests.Services
         }
 
         [Fact]
-        public void EditPost_ShouldReturnTrue()
+        public async Task EditPost_ShouldReturnTrue()
         {
 
             //Arrange
@@ -71,7 +71,7 @@ namespace Ezam_System.Tests.Services
             data.Posts.Add(post);
             data.SaveChanges();
 
-            var result = postService.Edit(1,"name1","message1",DateTime.Now);
+            var result = await postService.EditAsync(1, "name1", "message1", DateTime.Now);
 
             //Assert
 
@@ -82,7 +82,7 @@ namespace Ezam_System.Tests.Services
         }
 
         [Fact]
-        public void DeletePost_ShouldReturnFalse()
+        public async Task DeletePost_ShouldReturnFalse()
         {
 
             //Arrange
@@ -93,13 +93,13 @@ namespace Ezam_System.Tests.Services
 
             //Assert
 
-            Assert.False(postService.Delete(1));
+            Assert.False(await postService.DeleteAsync(1));
 
         }
 
 
         [Fact]
-        public void DeletePost_ShouldBeSuccess()
+        public async Task DeletePost_ShouldBeSuccess()
         {
 
             //Arrange
@@ -114,7 +114,7 @@ namespace Ezam_System.Tests.Services
 
             //Assert
 
-            Assert.True(postService.Delete(1));
+            Assert.True(await postService.DeleteAsync(1));
         }
 
 

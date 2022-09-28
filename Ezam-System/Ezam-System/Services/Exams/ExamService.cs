@@ -15,7 +15,7 @@ namespace Ezam_System.Services.Exams
             this.data = data;
         }
 
-        public void AddExam(string hall, DateTime date, DateTime time, int typeId, int statusId)
+        public async Task AddExamAsync(string hall, DateTime date, DateTime time, int typeId, int statusId)
         {
             var exam = new Exam()
             {
@@ -26,12 +26,12 @@ namespace Ezam_System.Services.Exams
                 StatusId = statusId
             };
 
-            this.data.Exams.Add(exam);
+            await this.data.Exams.AddAsync(exam);
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
         }
 
-        public bool DeleteExam(int id)
+        public async Task<bool> DeleteExamAsync(int id)
         {
 
             var currentExam = this.data.Exams.FirstOrDefault(x => x.Id == id);
@@ -42,12 +42,12 @@ namespace Ezam_System.Services.Exams
             }
 
             this.data.Exams.Remove(currentExam);
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
             return true;
         }
 
-        public bool EditExam(int id, string hall, DateTime date, DateTime time, int statusId)
+        public async Task<bool> EditExamAsync(int id, string hall, DateTime date, DateTime time, int statusId)
         {
             var currentExam = this.data.Exams.FirstOrDefault(x => x.Id == id);
 
@@ -61,7 +61,7 @@ namespace Ezam_System.Services.Exams
             currentExam.Time = time;
             currentExam.StatusId = statusId;
 
-            this.data.SaveChanges();
+            await this.data.SaveChangesAsync();
 
             return true;
 

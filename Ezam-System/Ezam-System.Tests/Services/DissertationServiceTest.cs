@@ -14,7 +14,7 @@ namespace Ezam_System.Tests.Services
     {
 
         [Fact]
-        public void AddDissertation_ShouldReturnTrue()
+        public async Task AddDissertation_ShouldReturnTrue()
         {
 
             //Arrange
@@ -26,10 +26,10 @@ namespace Ezam_System.Tests.Services
             var supervisor = "supervisor";
 
             //Act
-            dissertationService.Create(
-                                       fullName,
-                                       dissertationNumber,
-                                       supervisor);
+            await dissertationService.CreateAsync(
+                                        fullName,
+                                        dissertationNumber,
+                                        supervisor);
 
 
             var dissertation = data.Dissertations
@@ -43,7 +43,7 @@ namespace Ezam_System.Tests.Services
         }
 
         [Fact]
-        public void EditDissertation_ShouldReturnTrue()
+        public async Task EditDissertation_ShouldReturnTrue()
         {
 
             //Arrange
@@ -60,7 +60,7 @@ namespace Ezam_System.Tests.Services
             data.Dissertations.Add(dissertation);
             data.SaveChanges();
 
-            var result = dissertationService.Edit(1, "name2", 23444, "sname3");
+            var result = await dissertationService.EditAsync(1, "name2", 23444, "sname3");
 
             //Assert
             Assert.True(result);
@@ -70,7 +70,7 @@ namespace Ezam_System.Tests.Services
         }
 
         [Fact]
-        public void DeleteDissertation_ShouldReturnFalse()
+        public async Task DeleteDissertation_ShouldReturnFalse()
         {
 
             //Arrange
@@ -81,13 +81,13 @@ namespace Ezam_System.Tests.Services
 
             //Assert
 
-            Assert.False(dissertationService.Delete(1));
+            Assert.False(await dissertationService.DeleteAsync(1));
 
         }
 
 
         [Fact]
-        public void DeleteDissertation_ShouldBeSuccess()
+        public async Task DeleteDissertation_ShouldBeSuccess()
         {
 
             //Arrange
@@ -108,7 +108,7 @@ namespace Ezam_System.Tests.Services
 
             //Assert
 
-            Assert.True(dissertationService.Delete(1));
+            Assert.True(await dissertationService.DeleteAsync(1));
         }
     }
 }

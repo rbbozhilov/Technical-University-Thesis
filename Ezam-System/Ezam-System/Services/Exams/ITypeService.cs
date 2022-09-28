@@ -5,10 +5,10 @@ namespace Ezam_System.Services.Exams
     public interface ITypeService
     {
 
-        void AddType(
+        Task AddTypeAsync(
              string subjectName);
 
-        bool EditType(
+        Task<bool> EditTypeAsync(
                       int id,
                       string subjectName);
 
